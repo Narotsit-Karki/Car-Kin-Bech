@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'common'
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# CREATING A CUSTOM USER MODEL
+AUTH_USER_MODEL = "common.KinBechUser"
+swappable = "AUTH_USER_MODEL"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
