@@ -1,0 +1,57 @@
+    /* Custom CSS for changing link color to blue */
+    .blue-link {
+        font-weight: 500;
+        
+      }
+      .black-text {
+      color:black;
+      
+    }
+    .blue-textbox {
+      border: 2px solid blue;
+      border-radius: 10px; /* Adjust the border radius as needed */
+      background-color:rgb(20, 8, 182);
+      color: white; /* Text color in the input boxes */
+      width: 100%;
+    }
+    .login-button {  /*login button*/
+      border-radius: 10px;
+      background-color: orange;
+      
+    }
+    .yellow-bg {
+     /* background-color: yellow;*/
+      width: 320px;
+      border: 2px;
+      border-radius: 10px;
+    }
+
+    .reduce-margin-padding {
+      margin: 3px 0; /* Reduce top and bottom margin */
+      padding: 5px 10px; /* Adjust padding as needed */
+    }
+    .remember-forgot {
+      display: flex;
+     /* justify-content: space-between;*/
+      align-items: center;
+      margin: 50px 0; /* Adjust the margin to control the spacing if needed */
+  }
+
+  .remember-forgot a {
+      margin-left: 10px; /* Add left margin to "Forgot Password" link to control the spacing */
+  }
+
+  .blue-box {
+          background-color: rgb(20, 8, 182);
+          height: 150px; /* Adjust the height as needed */
+          border-bottom-left-radius: 10px; /* Curved from the bottom-left corner */
+          border-bottom-right-radius: 10px; /* Curved from the bottom-right corner */
+  
+  }
+  .form-control {
+      border-color: transparent;
+      
+  }
+  .card {
+border-color: transparent;
+}
