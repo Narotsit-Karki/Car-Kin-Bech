@@ -25,7 +25,7 @@
                             <span class="blue-link ml-2">
                                 <div class="nav-link text-center mt-2">
                                     Don't have an account?
-                                    <a href="register.html" style="color: blue;">Register</a>
+                                    <a href="/register" style="color: blue;">Register</a>
                                 </div>
                             </span>
                         </div>
@@ -34,4 +34,11 @@
             </div>
         </div>
     </div>
+ {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
