@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-
+import os , sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0,os.path.join(BASE_DIR,'modules'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,8 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common'
+    'common',
+    'modules.resale_store_module',
+    'modules.payment_module',
+    'modules.security_module',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    # 'app_security',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +63,7 @@ ROOT_URLCONF = 'CAR_KIN_BECH.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['modules/payment_module/template','modules/security_module/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,13 +127,27 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# flash messages 
+try:
+    from django.contrib.messages import constants as alert_message
+    MESSAGE_TAGS = {
+        alert_message.DEBUG: 'alert-info',
+        alert_message.INFO: 'alert-info',
+        alert_message.SUCCESS: 'alert-success',
+        alert_message.WARNING: 'alert-warning',
+        alert_message.ERROR: 'alert-danger'
+    }
+except Exception as ex:
+    pass
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACK = "bootstrap4"

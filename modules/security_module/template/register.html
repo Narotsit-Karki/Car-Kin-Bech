@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% load crispy_forms_tags %}
+{% crispy form %}
+{% block content %}
+      <div class="mt-5 p-2">
+        <div class="card shadow mt-5">
+          <div class="col-12 p-2">
+            {% include 'messages.html' %}
+          </div>
+          <div class="card-body">
+            <div class="text-center"">                     
+              <h2 class="" style="color: blue;"">Registration </h2>
+            </div>
+            <form method="POST" >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-6 border-end border-2 border-primary">
+                  <div class="row"> 
+                    <div class="col">
+                      <label for="fname"  style="color: blue;">{{ form.first_name.label}}</label>
+                        {{form.first_name}}
+                        {% if form.first_name.errors %}
+                          {% for error in form.first_name.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                      <label for="lname"  style="color: blue;">{{form.last_name.label}}</label>
+                        {{ form.last_name }}
+  
+                        {% if form.last_name.errors %}
+                          {% for error in form.last_name.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="col-12">
+                      <label for="email" style="color: blue;">{{form.email.label}}</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                          {% for error in form.email.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                    </div>
+                  <div class="col-12">
+                    <label for="email" style="color: blue;"> {{ form.phone.label }} </label>
+                   {{form.phone}}
+                   {% if form.phone.errors %}
+                          {% for error in form.phone.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                    {% endif %}
+                  </div>
+                  </div> 
+                </div>
+                <div class="col-6">
+                  <div class="row ">
+                    <div class="col-12">
+                      <label for="username" style="color: blue;">{{form.username.label}}</label>
+                       {{ form.username }}
+                       {% if form.username.errors %}
+                          {% for error in form.username.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                    </div>
+  
+                  <div class="col-6">
+                      <label for="password" style="color: blue;">{{form.password.label}}</label>
+                       {{ form.password }}
+                       {% if form.password.errors %}
+                          {% for error in form.password.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                  </div>
+                  <div class="col-6">
+                    <label for="password2" style="color: blue;">Confirm Password</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                          {% for error in form.password2.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+                </div>
+                  <div class="col-12">
+                    <label for="user_type" style="color: blue;">What Are You ?</label>
+                    {{form.user_type}}
+                    {% if form.user_type.errors %}
+                          {% for error in form.user_type.errors %}
+                          <span class="text text-danger">{{error|escape}}</span>
+                          {% endfor %}
+                        {% endif %}
+
+                  </div>
+                </div>
+              </div>  
+              <div class="mt-2 p-1">
+                            <button class="btn login-button w-100" type="submit">Register</button>
+
+                               <span class="blue-link ml-2 ">
+                                 <div class="nav-link text-center mt-2">
+                                 Already Registered? 
+                                  <a href="{% url 'login' %}" style="color: blue;">Login</a>
+                                </div>
+                              </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}
