@@ -2,7 +2,7 @@ from typing import Any
 from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractUser
-
+from django.urls import reverse
 
 # base model for every model
 class BaseModel(models.Model):
@@ -20,17 +20,13 @@ class KinBechUser(AbstractUser):
                  ('seller','Seller')
                  )
     
-    phone = models.BigIntegerField(null=False,blank=False)
-    user_type = models.CharField(max_length=10,choices=USER_TYPE,null=False,blank=False)
+    phone = models.BigIntegerField(null=False,blank=False,error_messages="a valid phone number is required")
+    user_type = models.CharField(max_length=10,choices=USER_TYPE,null=False,blank=False,error_messages="please choose a valid user type")
     
     # swapping the default user model with this model
     class Meta(AbstractUser.Meta):
         # flag to denote that KinBechUser will now Swap the default User class of django
         swappable = "AUTH_USER_MODEL"
 
-
-        
-
-
-
-
+    def get_absolute_url(self):
+        return reverse("user",kwargs={'username':self.username})
