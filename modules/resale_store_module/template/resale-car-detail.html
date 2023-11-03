@@ -1,0 +1,146 @@
+{% extends 'store-base.html' %}
+{% load static %}
+{% block title %} Car Detail {% endblock %}
+{% block content %}
+    <div class="container-fluid p-2">
+        <div class="d-inline-block p-2">
+                <img class="img-fluid rounded-3" src="https://fastly-production.24c.in/hello-ar/dev/uploads/6505965c35f7eb5c6cc7df25/c46367da-df70-4229-bda4-a0ab18f82fa0/slot/11217659719-3e9bcbb02f37478eace656c8101cb96b-Exterior-7.jpg?w=700&h=403&auto=format">        
+        </div>
+        <div class="d-inline-block border border-sm p-2" style="width: 32rem;">
+            <h1>{{resale_car.fullname}}</h2>
+            <h5 class="fw-light">{{resale_car.car_detail.extra_info}} &#2022; {{resale_car.car_detail.transmission_type}}</h5>
+            <span class="badge bg-light text-dark">{{resale_car.car_detail.km_driven}} KM</span>
+            <span class="badge bg-light text-dark text-uppercase">{{resale_car.car_detail.owner_type}}</span>
+            <span class="badge bg-light text-dark text-uppercase">{{resale_car.car_detail.engine_type}}</span>
+            
+            <span class="text-light mt-2 d-block badge bg-primary fs-6">Know your car</span>
+            <div class="row p-2">
+                <div class="row p-2">
+                    <div class="col-3">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/reg_year.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">Reg Year</div>
+                        <small class="fw-normal">Jan {{resale_car.car_detail.registered_year}}</small>
+                    </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-inline-block align-top">
+                            <img src="{% static 'images/make_year.webp' %}" alt="" width="24" height="24">
+                        </div>
+                        <div class="d-inline-block ms-1">
+                            <div class="text-muted">Mfd Year</div>
+                            <small class="fw-normal">{{resale_car.car_detail.registered_year}}</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-inline-block align-top">
+                            <img src="{% static 'images/reg_number.webp' %}" alt="" width="24" height="24">
+                        </div>
+                        <div class="d-inline-block ms-1">
+                            <div class="text-muted">VIN</div>
+                            <small class="fw-normal" style=";">{{resale_car.vehicle_identification_number}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-2">
+            <div class="col-4">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/engine_capacity.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">Engine</div>
+                        <small class="fw-normal">{{resale_car.car_detail.engine_capacity}} cc</small>
+                    </div>
+            </div>
+            <div class="col-4">
+                <div class="d-inline-block align-top">
+                    <img src="{% static 'images/insurance.webp' %}" alt="" width="24" height="24">
+                </div>
+                <div class="d-inline-block ms-1">
+                    <div class="text-muted">Insurance</div>
+                    <small class="fw-normal">{{resale_car.car_detail.insurance_type}}</small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-inline-block align-top">
+                    <img src="{% static 'images/spare_key_black.webp' %}" alt="" width="24" height="24">
+                </div>
+                <div class="d-inline-block ms-1">
+                    <div class="text-muted">Spare Key</div>
+                    <small class="fw-normal text-success">Yes</small>
+                </div>
+            </div>
+                </div>
+                <div class="row p-2">
+                <div class="col-4">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/transmission_type.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">Transmission</div>
+                        <small class="fw-normal">{{resale_car.car_detail.transmission_type }}</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/km_driven_black.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">KM Driven</div>
+                        <small class="fw-normal">{{resale_car.car_detail.km_driven}} km</small>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/ownership.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">Ownership</div>
+                        <small class="fw-normal">{{resale_car.car_detail.owner_type}} </small>
+                    </div>
+                </div>
+                <div class="col-4 mt-2">
+                    <div class="d-inline-block align-top">
+                        <img src="{% static 'images/fuel_type.webp' %}" alt="" width="24" height="24">
+                    </div>
+                    <div class="d-inline-block ms-1">
+                        <div class="text-muted">Fuel Type</div>
+                        <small class="fw-normal">{{resale_car.car_detail.engine_type}}</small>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <hr class="m-2">
+                <div class="col-6">
+                    <h5 class="orange-text fs-3">NPR {{resale_car.price}} Lakh</h5>
+                </div>
+                <div class="col-6">
+                    <form action="{% url 'stripe_checkout_session_create' resale_car.vehicle_identification_number %}" method="POST">
+                        {% csrf_token %}
+                    <button type="submit" class="btn w-100 btn-outline-warning">
+                        <span class="me-2">
+                            <img src="{% static 'images/icon-shopping-cart.png' %}" alt="" width="24" height="24">
+                        </span>Buy directly 
+                    </button>
+                    </form>
+                </div>
+                <div class="col-2 mt-2">
+                    <button class="btn btn-light">
+                        <img src="{% static 'images/icon-love.svg' %}">
+                    </button>
+                </div>
+                <div class="col-10 mt-2">
+                    <button class="btn login-button w-100 fw-bold text-light rounded-1">
+                        BOOK A FREE TEST DRIVE
+                    </button>
+                </div>
+            </div>
+            </div>
+    
+        </div>
+     
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}

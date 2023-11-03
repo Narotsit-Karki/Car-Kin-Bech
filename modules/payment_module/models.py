@@ -44,8 +44,8 @@ class Transaction(BaseModel):
     note = models.TextField()
     # Transaction_type = models.CharField(choices=)
 
-class Shipping(BaseModel):
-    pass
+# class Shipping(BaseModel):
+#     pass
 
 # send customer success email after successfull order creation
 @receiver(post_save,sender=Order)

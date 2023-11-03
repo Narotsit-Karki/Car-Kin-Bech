@@ -63,7 +63,7 @@ ROOT_URLCONF = 'CAR_KIN_BECH.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['modules/payment_module/template','modules/security_module/template'],
+        'DIRS': ['modules/payment_module/template','modules/security_module/template','modules/resale_store_module/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,3 +151,6 @@ except Exception as ex:
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 CRISPY_ALLOWED_TEMPLATE_PACK = "bootstrap4"
+import pandas as pd
+cleaned_data = pd.read_csv("model_data/car_resales_price_cleaned.csv").drop(['Unnamed: 0'],axis = 1)
+print('\n\n[*] models data loaded \n\n')
