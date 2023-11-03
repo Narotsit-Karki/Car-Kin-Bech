@@ -1,0 +1,61 @@
+{% extends 'store-base.html' %}
+{% load static %}
+{% block title %} Buy and Sell Used Cars{% endblock %}
+{% block content %}
+        <div class="container-fluid">
+            <div class="row p-2">
+                <div class="col-3">
+                    <div class="dropdown border border-primary rounded-2">
+                        <button class="btn dropdown-toggle w-100 rounded-0" style="background-color: blue; text-align: start; color: white;" type="button">
+                            Brands
+                        </button>
+                        <div class="dropdown-menu-car">
+                            <div class="dropdown-item fw-normal bg-primary text-light"> 
+                                All
+                            </div>
+                            {% for brand in CAR_BRANDS %}
+                            <div class="dropdown-item fw-bold">
+                                {{brand}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row">
+                        
+                        {% for car in resale_car%}
+                        <div class="col-4">
+                        <div class="card m-2 card-car shadow-sm" id="car-card" onclick="location.href  = '{{car.get_absolute_url}}' ">
+                            <img class="card-img-top" src="https://fastly-production.24c.in/hello-ar/dev/uploads/6505965c35f7eb5c6cc7df25/c46367da-df70-4229-bda4-a0ab18f82fa0/slot/11217659719-3e9bcbb02f37478eace656c8101cb96b-Exterior-7.jpg?w=690&auto=format" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div class="">
+                                        <h5 class="card-text">{{car.fullname}}</h5>
+                                        <p class="fw-light mb-0">{{car.car_detail.extra_info}} &#2022; {{car.car_detail.transmission_type}}</p>
+                                       
+                                    </div>
+                                    <div class="">
+                                        <a href="#">
+                                            <img src="{% static 'images/icon-love.svg' %}" width="24" height="24">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="my-2 text-uppercase">
+                                    <span class="badge bg-light text-dark">{{car.car_detail.km_driven}} KM</span>
+                                    <span class="badge bg-light text-dark">{{car.car_detail.owner_type}}</span>
+                                    <span class="badge bg-light text-dark">{{car.car_detail.engine_type}}</span>
+                                </div>
+                                <h6 class="text-muted mt-2">NPR. {{car.full_price}}</h6>
+                              </div>
+                          </div>
+                        </div>
+                       
+                        {% endfor %}
+                      </div>
+                </div>
+            </div>
+        </div>
+       
+{% endblock %}
+
