@@ -1,10 +1,11 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from django.http import HttpResponseNotAllowed, HttpResponseServerError
 from django.http.response import JsonResponse
 import stripe
 from stripe.error import StripeError
 from .models import ResaleCar
 import os
+
 # Create your views here.
 stripe.api_key = os.environ.get("STRIPE_API_KEY_TEST")
 DOMAIN_URL = 'http://localhost:8000'
@@ -14,17 +15,15 @@ def checkout(request):
     template = "checkout.html"
     return render(request,template_name=template)
 
-def create_checkout_session(request):
+def create_checkout_session(request,vin):
     if request.method == "POST":
-       
-        try:
-            
-            product = stripe.Product.create(name = "Hyundai Creta",
+        resale_car = get_object_or_404(ResaleCar,vehicle_identification_number = vin)
+        try:  
+            product = stripe.Product.create(name = resale_car.fullname,
                                             images = ["https://imgd.aeplcdn.com/1056x594/n/t5acs0b_1641691.jpg?q=80",]
                                         )
-            
             product_price = stripe.Price.create( 
-                product = product , unit_amount = 450000 * PAISA, currency = 'npr'
+                product = product , unit_amount = int(resale_car.price*1e6), currency = 'npr'
                 )
 
             stripe_checkout_session = stripe.checkout.Session.create(
