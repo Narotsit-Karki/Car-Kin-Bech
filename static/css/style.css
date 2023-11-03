@@ -1,7 +1,24 @@
     /* Custom CSS for changing link color to blue */
-    body{
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    @font-face {
+      font-family: Lato-Regular;
+      src: url('/static/fonts/Lato/Lato-Regular.ttf')  format('truetype');
     }
+    body{
+      font-family: Lato-Regular,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      height:100%;
+    }
+    
+    html {
+      height:100%;
+    }
+  .container-fluid {
+      min-height:100%;
+  }
+  
+  .footer {
+      margin-top:-40px;
+  }
+
     .blue-link {
         font-weight: 500;
         
@@ -57,4 +74,25 @@
   }
   .card {
 border-color: transparent;
+}
+
+.card-car{
+  cursor: pointer;
+  transform: scale(1,1);
+  transition: all 0.3s ease 0s;
+}
+.card-car:hover , .card-car:focus {
+  transform: scale(1.05,1.05)
+}
+
+.orange-text{
+  color:#ff851b;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.orange-outline-button{
+  border: 1px solid #ff851b;
 }
