@@ -103,6 +103,16 @@ class WishList(BaseModel):
         return f"{self.user.username} {self.car.vehicle_identification_number}"
     
 
+    
+class TestDrive(BaseModel):
+    fullname = models.CharField(max_length= 600,null=True,blank=True)
+    contact = models.BigIntegerField()
+    date = models.DateTimeField()
+    resale_car = models.ForeignKey(to=ResaleCar,null=False,blank=False,on_delete=models.DO_NOTHING)
+
+    def __str__(self) -> str:
+        return f"{self.contact} {self.date}"
+    
 # saves previous owner and car_detail after saving new ResaleCar object
 @receiver(pre_save,sender = ResaleCar)
 def save_previous_owner_and_car_detail(sender,instance,**kwargs):
@@ -135,5 +145,3 @@ def save_previous_owner_and_car_detail(sender,instance,**kwargs):
     instance.car_detail = car_detail
 
 
-    
-    
