@@ -1,11 +1,21 @@
-{% extends 'store_base.html' %}
+{% extends 'store-base.html' %}
 {% load static %}
 {% block title %} Payment Success {% endblock %}
 {% block content %}
-  <section>
-    <p>
-      We appreciate your business! If you have any questions, please email
-      <a href="mailto:orders@example.com">orders@example.com</a>.
-    </p>
-  </section>
+<div class="container p-3">
+  <div class="row">
+    <div class="col d-flex align-items-center">
+      <div class="ms-5">
+        <h1 class="text-success">PAYMENT SUCCESS</h1>
+       <p class="orange-text fst-italic fs-6">
+        There was a problem processing your payment. Sorry, but we're having trouble proceessing your payment. You have not been charged for this Transaction. Please try again.
+       </p>
+       <button class="btn btn-outline-success rounded-pill">Home</button>
+      </div>
+    </div>
+    <div class="col"> 
+      <img class="img-fluid ms-3" src="{% static 'images/payment-success.jpg' %}" width="500" height="500">
+    </div>
+  </div>
+  </div>
 {% endblock %}

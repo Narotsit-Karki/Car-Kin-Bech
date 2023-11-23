@@ -1,0 +1,19 @@
+{% extends 'store-base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+{% block content  %}
+    <div class="hero">
+      <div class="content">
+        <h1 class="ani">Discover <br />Your Perfect Ride</h1>
+        <p class="ani">
+          Explore a vast selection of vehicles from trusted sellers. From sleek
+          sedans to rugged SUVs and high-performance sports cars, AutoTrade Hub
+          is your one-stop-shop for finding the car that matches your style and
+          needs.
+        </p>
+        <a href="{% url 'car-list-catalog' %}" class="btnx ani">Buy</a>
+      </div>
+      <img src="{% static 'images/ford.png' %}" class="feature-img ani" />
+    </div>
+ {% endblock %}

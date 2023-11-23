@@ -151,6 +151,5 @@ except Exception as ex:
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 CRISPY_ALLOWED_TEMPLATE_PACK = "bootstrap4"
-import pandas as pd
-cleaned_data = pd.read_csv("model_data/car_resales_price_cleaned.csv").drop(['Unnamed: 0'],axis = 1)
-print('\n\n[*] models data loaded \n\n')
+LOGIN_REDIRECT_URL = "/buy-car"
+LOGIN_URL = "/login"
