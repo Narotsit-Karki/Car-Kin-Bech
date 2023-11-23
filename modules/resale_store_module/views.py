@@ -8,6 +8,11 @@ from django.views.generic import ListView,DetailView
 # Create your views here.
 from .models import cleaned_data
 
+
+def home(request):
+    template_name = "home.html"
+    return render(request,template_name)
+
 class ResaleCarCatalogView(ListView):
     template_name = "resale-car-list.html"
     context_object_name = 'resale_car'

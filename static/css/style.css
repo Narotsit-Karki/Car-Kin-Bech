@@ -147,7 +147,7 @@ nav ul li a {
     font-weight: 400;
 }
 
-.btn {
+.btnx {
     display: inline-block;
     text-decoration: none;
     padding: 14px 40px;
@@ -181,7 +181,7 @@ nav ul li a {
     animation-delay: 1s;
 }
 
-.btn:hover {
+.btnx:hover {
     border-top-right-radius: 30px;
 }
 
