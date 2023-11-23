@@ -5,16 +5,19 @@ import stripe
 from stripe.error import StripeError
 from .models import ResaleCar
 import os
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 stripe.api_key = os.environ.get("STRIPE_API_KEY_TEST")
 DOMAIN_URL = 'http://localhost:8000'
 PAISA  = 100
 
+@login_required
 def checkout(request):
     template = "checkout.html"
     return render(request,template_name=template)
 
+@login_required
 def create_checkout_session(request,vin):
     if request.method == "POST":
         resale_car = get_object_or_404(ResaleCar,vehicle_identification_number = vin)
@@ -70,11 +73,12 @@ def create_checkout_session(request,vin):
         
     else:
         raise HttpResponseNotAllowed(permitted_methods=['POST'])
-    
+
+@login_required    
 def payment_success(request):
     template = "payment_success.html"
     return render(request,template_name=template)
-
+@login_required
 def payment_cancel(request):
     template = "payment_cancel.html"
     return render(request,template_name=template)

@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404 , redirect
 from django.http import request
-from .models import WishList,ResaleCar
+from .models import WishList,ResaleCar, TestDrive
 from django.contrib import messages
 from django.views.generic import ListView,DetailView
 # Create your views here.
@@ -66,3 +66,14 @@ def add_or_remove_wishlist(request,vin):
 
 
 
+
+def book_test_drive(request,vin):
+    if request.method == "POST":
+        test_drive_car = get_object_or_404(ResaleCar,vin = vin)
+        test_drive_obj , created = TestDrive.get_or_create(resale_car = test_drive_car , date = request.FORM['date'])
+        if created:
+            messages.success(request,message="Test drive booked successfully")
+            return redirect(reversed("car-list-catalog"))
+    else:
+        return redirect(request.META['HTTP_REFERER'])
+    
